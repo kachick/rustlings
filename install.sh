@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "Let's get you set up with Rustlings!"
+echo -e "\nLet's get you set up with Rustlings!"
 
 echo "Checking requirements..."
 if [ -x "$(command -v git)" ]
@@ -137,7 +137,7 @@ fi
 
 Path=${1:-rustlings/}
 echo "Cloning Rustlings at $Path..."
-git clone -q https://github.com/rust-lang/rustlings "$Path"
+git clone -q https://github.com/rust-lang/rustlings.git "$Path"
 
 cd "$Path"
 
@@ -165,7 +165,7 @@ echo "Checking out version $Version..."
 git checkout -q ${Version}
 
 echo "Installing the 'rustlings' executable..."
-cargo install --force --path .
+cargo install --locked --force --path .
 
 if ! [ -x "$(command -v rustlings)" ]
 then
